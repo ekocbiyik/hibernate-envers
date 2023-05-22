@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  database:
+    container_name: database
+    image: postgres:12.7
+    ports:
+      - 5433:5433
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGPORT=5433
+      - ALLOW_IP_RANGE=0.0.0.0/0
+    restart: always
+#    network_mode: host
+    volumes:
+      - db-volume:/var/lib/postgresql
+
+volumes:
+  db-volume:
